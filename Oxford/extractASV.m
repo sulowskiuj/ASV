@@ -7,7 +7,7 @@ dataset_dir = './Oxford_dataset/';
 Lname = {'bark','bikes','boat','graf','leuven','trees','ubc','wall'};
 detectType = 1;
 
-
+    
 %% Important parameters
 
 isInter = 0; % Default 0. If you set to 1 then the interpolation will be activated.
@@ -35,7 +35,7 @@ for i = 1:8
         tic
         fprintf('i:%d  j:%d\n',i,j)
         im1 = imread([dataset_dir,Lname{i},'/img',num2str(j),'.ppm']);
-
+        
         if size(im1,3)>1
             im1 = rgb2gray(im1);
         end

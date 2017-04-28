@@ -26,7 +26,7 @@ clc
 
 
 %% Parameters you may control
-desType = 4; % Set to 1 for SIFT, 2 for DSP, 3 for ASV-SIFT(1S), 4 for ASV-SIFT(1M2M).
+desType = 5; % Set to 1 for SIFT, 2 for DSP, 3 for ASV-SIFT(1S), 4 for ASV-SIFT(1M2M), 5 for ASV_clahe.
 detectType = 1; % 1 for DoGAff of vlfeat covdet function with affine approximation
 samMax = 5000; % Default 5000 keypoints (already sorted by peakscores in extraction)
 isPlot = 1; % Set to 1 and the PR-curve will show.
@@ -94,6 +94,14 @@ for i =1:8
             load([nameD2,'/1M2M']);
             f2 = f;
             d2 = d_1m2m;
+        elseif desType == 5
+            load([nameD1,'/ASV_CLAHE']);
+            f1 = f;
+            d1 = d_asv;
+            
+            load([nameD2,'/ASV_CLAHE']);
+            f2 = f;
+            d2 = d_asv;
         else
             fprintf('Wrong "desType" choice!!! Error!!!\n');
             stop
@@ -192,6 +200,8 @@ if isSave == 1
         save([nameR,'allResults_asv'],'AP');
     elseif desType ==4
         save([nameR,'allResults_1m2m'],'AP');
+    elseif desType ==5
+        save([nameR,'allResults_asv_clahe'],'AP');
     else
         fprintf('Wrong "desType" choice!!! Error!!!\n');
         stop
