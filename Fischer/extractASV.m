@@ -1,4 +1,4 @@
-clear all
+%rclear all
 close all
 clc
 
@@ -27,7 +27,7 @@ opt.nr = 1; % Number of the sampled angles.
 
 
 %% Extract the descriptor from the whole dataset
-for i =1:16
+for i =5:16
     LL = dir([dataset_dir,Lname{i},'/*.jpg']);
     LLname = {LL.name};
     for j = 1:size(LLname,2)
